@@ -1,0 +1,27 @@
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: runnerserver
+spec:
+  backoffLimit: 1
+  completions: 1
+  parallelism: 1
+  template:
+    metadata:
+      labels:
+        name: runnerserver
+    spec:
+      imagePullSecrets:
+        - name: acrpullsec
+      containers:
+        - image: imacr.azurecr.io/shubhangip/thrifttimeout3:v1
+          imagePullPolicy: Always
+          ports:
+            - name: port8000
+              containerPort: 8000
+          name: runnerserver
+          command: ["sh","-c" ]
+          args:
+          - set -e && java -cp runner.jar thrift_demo.RunnerThriftServer;
+      restartPolicy: Never

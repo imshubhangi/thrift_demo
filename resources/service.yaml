@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: runnerserver
+spec:
+  ports:
+  - port: 8000
+    name: port8000
+    targetPort: 8000
+  selector:
+    name: runnerserver
+  type: LoadBalancer
