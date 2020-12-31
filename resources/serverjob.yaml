@@ -15,7 +15,7 @@ spec:
       imagePullSecrets:
         - name: acrpullsec
       containers:
-        - image: imacr.azurecr.io/shubhangip/thrifttimeout3:v1
+        - image: imacr.azurecr.io/project1/thrifttimeout3:v1
           imagePullPolicy: Always
           ports:
             - name: port8000
